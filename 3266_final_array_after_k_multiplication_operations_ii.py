@@ -3,10 +3,13 @@ import heapq
 mod = 10 ** 9 + 7
 
 def fast_pow(base, exp):
-    if exp == 0:
-        return 1
-    square = fast_pow(base, exp//2) ** 2
-    return square if exp % 2 == 0 else square * base
+    res = 1
+    while exp > 0:
+        if exp % 2 == 1:
+            res = (res * base) % mod
+        base = (base * base) % mod
+        exp //= 2
+    return res
 
 
 def getFinalState(nums, k, multiplier):
