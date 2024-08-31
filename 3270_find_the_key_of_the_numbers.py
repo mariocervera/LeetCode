@@ -13,8 +13,6 @@ def generateKey(num1, num2, num3):
     return int("".join(res))
 
 
-
-
 print(generateKey(num1=1, num2=10, num3=1000))  # 0
 print(generateKey(num1=987, num2=879, num3=798))  # 777
 print(generateKey(num1=1, num2=2, num3=3))  # 1
