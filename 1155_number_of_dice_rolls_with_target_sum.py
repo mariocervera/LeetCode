@@ -6,20 +6,19 @@ mod = 10 ** 9 + 7
 # Top-down solution using memoization
 
 def num_rolls_to_target_top_down(n, k, target):
+
     @lru_cache(maxsize=None)
     def backtrack(i, _sum):
-        if i == n and _sum == target:
-            return 1, True
-        if i == n or _sum >= target:
-            return 0, False
+        if i == n:
+            return 1 if _sum == target else 0
+        if _sum > target:
+            return 0
         res = 0
         for face in range(1, k + 1):
-            ways, success = backtrack(i + 1, _sum + face)
-            if success:
-                res = (res + ways) % mod
-        return res, True
+            res = (res + backtrack(i + 1, _sum + face)) % mod
+        return res
 
-    return backtrack(0, 0)[0]
+    return backtrack(0, 0)
 
 
 # Bottom-up dynamic-programming solution
