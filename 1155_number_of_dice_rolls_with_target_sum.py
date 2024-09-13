@@ -15,8 +15,8 @@ def num_rolls_to_target_top_down(n, k, target):
             return 0
         res = 0
         for face in range(1, k + 1):
-            res = (res + backtrack(i + 1, _sum + face)) % mod
-        return res
+            res += backtrack(i + 1, _sum + face)
+        return res % mod
 
     return backtrack(0, 0)
 
