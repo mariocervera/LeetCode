@@ -1,7 +1,7 @@
 import functools
 
 
-def compare_integers(a, b):
+def compare(a, b):
     if a == b:
         return 0
     return -1 if a + b > b + a else 1
@@ -9,7 +9,7 @@ def compare_integers(a, b):
 
 def maxGoodNumber(nums):
     nums = [bin(num)[2:] for num in nums]
-    nums.sort(key=functools.cmp_to_key(compare_integers))
+    nums.sort(key=functools.cmp_to_key(compare))
     return int("".join(nums), 2)
 
 
